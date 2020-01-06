@@ -1,0 +1,3 @@
+﻿  Board.cpp
+c:\users\vegag\source\repos\chess game\chess game\board.cpp(90): warning C4018: '<': signed/unsigned mismatch
+  Chess Game.vcxproj -> C:\Users\vegag\source\repos\Chess Game\Debug\Chess Game.exe
