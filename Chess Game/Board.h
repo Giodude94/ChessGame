@@ -6,6 +6,7 @@
 #include <string>
 #include "Piece.h"
 #include "Utilities.h"
+#include "Pawn.h"
 
 
 class Board {
@@ -22,6 +23,7 @@ public:
 
 	const void displayBoard(); //Function for displaying the board;
 	std::string chessCharacter(Piece* chessPiece);
+	bool movePiece(Position target, Position destination);
 
 
 

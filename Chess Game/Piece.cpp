@@ -15,6 +15,7 @@ Piece::Piece(pieceNames ID, pieceColor player) //Since we delegate to this const
 {
 	this->pos.xpos = 0;
 	this->pos.ypos = 0;
+	//this->firstMove = false;
 
 }
 
@@ -35,7 +36,7 @@ pieceNames Piece::getPieceID()
 
 void Piece::setPlayer(pieceColor player)
 {
-	player = player;
+	player = this->player;
 }
 
 pieceColor Piece::getPlayer()

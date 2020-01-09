@@ -12,10 +12,11 @@ typedef struct Position {
 
 class Piece
 {
-private:
+protected:
 	pieceNames pieceID; //Piece ID is used to tell what type of chess piece it is.
 	pieceColor player; //To tell who's move it is/ what player is currently using their turn.
 	Position pos;	   //pos is a variable that will hold an x-position and a y-position variable with corresponds to the chess board.
+	//bool firstMove;   //Boolean to denote if the piece (pawns only) have made their first move.
 
 
 	 

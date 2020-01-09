@@ -1,4 +1,4 @@
-enum pieceName {
+/* enum pieceName {
 	Pawn,
 	Knight,
 	Bishop,
@@ -6,3 +6,4 @@ enum pieceName {
 	Queen,
 	King
 };
+*/

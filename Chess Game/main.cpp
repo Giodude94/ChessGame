@@ -9,75 +9,60 @@
 
 #include "Board.h"
 #include <vector>
-//#include "Piece.h"
+
+
 
 
 
 int main() {
+
+	//Pawn pawn(P,Black);
+	Pawn pawn(K);
+	std::cout << pawn.getFirstMove() << std::endl;
+	std::cout << pawn.getPieceID() << std::endl;
+	std::cout << pawn.getPlayer() << std::endl;
+	//Piece pPawn;
+	
+	
+
 	/*
-	//Piece* piece
-	Piece* piece = new Piece(P, Black);
-
-	//std::cout << piece->getPieceID() <<std::endl;
-
-	std::vector<std::vector<Piece*>> board(8);
-
-	std::vector<std::vector<int>> test();
-	
-	//Piece * piece = new Piece(P,Black);
-	board[0].push_back(piece);
-	piece = new Piece(P, Black);
-	board[1].push_back(piece);
-
-	//std::cout << board[0][1]->getPieceID();
-	
-	for (int i = 0; i < board.size(); i++) {
-		for (int j = 0; j < board[i].size(); j++)
-		{
-			//std::cout << i << " " << j;
-			std::cout << board[i][j]->getPieceID() << " ";
-			std::cout << board[i][j] << " ";
-			if (i == 1) {
-				Piece* piece = new Piece(1, 1);
-				board.push_back(piece);
-			
-		}
-		std::cout << std::endl;
-	}
-
-	std::cout << board[0][0]<<std::endl;
-	std::cout << board[1][0] << std::endl;
-	std::cout<<std::endl;
-
-	piece = board[0][0];
-
-	delete piece;
-	board[0][0] = NULL;
-	delete board[1][0];
-
-	std::cout << board[0][0] << std::endl;
-	std::cout << board[1][0] << std::endl;
-
-
-	for (int i = 0; i < board.size(); i++) {
-		for (int j = 0; j < board[i].size(); j++) {
-
-			std::cout << board[i][j]->getPieceID() << " ";
-		}
-		std::cout << "\n";
-	}
-	
-	*/
-	
 
 	Board gameBoard;
 
 	gameBoard.displayBoard();
+
+	Position target;
+	Position destination;
+	int x = 0;
+	int y = 0;
+
+
+	std::cout << "Which piece would you like to move?" << std::endl;
+	std::cin >> x;
+	std::cin >> y;
+
+	target.xpos = x;
+	target.ypos = y;
+
+	std::cout << "Where would you like to move the piece?" << std::endl;
+	std::cin >> x;
+	std::cin >> y;
+
+	destination.xpos = x;
+	destination.ypos = y;
+
+	if (gameBoard.movePiece(target, destination)) {
+		gameBoard.displayBoard();
+	}
+	else {
+		std::cout << "There was an issue with moving the piece." << std::endl;
+	}
+
 	
 
 
 	
-
+*/
 	system("Pause");
 
 
