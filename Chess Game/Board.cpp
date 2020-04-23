@@ -8,125 +8,95 @@ Board::Board() :board(8) {//Poppulate the board with the correct pieces.
 		for (int j = 0; j < 8; j++)
 		{
 			if (i == 0 && j == 0) {//This is where the backrow for the white chess pieces will be.
-				
-								   
-			
-				//Moving from using raw pointer to smart pointers.
-				
-				Piece* wRook = new Piece(R, White);
-				Piece* wKnight = new Piece(N, White);
-				Piece* wBishop = new Piece(B, White);
-				Piece* wQueen = new Piece(Q, White);
-				Piece* wKing = new Piece(K, White);
-				
-
-				/*
-				std::unique_ptr wRook = std::make_unique<Piece>(R, White);
-				std::unique_ptr wKnight = std::make_unique<Piece>(N, White);
-				std::unique_ptr wBishop = std::make_unique<Piece>(B, White);
-				std::unique_ptr wQueen = std::make_unique<Piece>(Q, White);
-				std::unique_ptr wKing = std::make_unique<Piece>(K, White);
-				*/
 
 				Position pos;
 				pos.xpos = i;
 				pos.ypos = j;
 
 
-				board[i].push_back(wRook);
-				wRook->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(R, White));
+				board[i].back()->setPosition(pos);
+				pos.ypos++; //Incrementing the ypos for use in code below.
+
+				board[i].emplace_back(std::make_unique<Piece>(N, White));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				board[i].push_back(wKnight);
-				wKnight->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(B, White));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				board[i].push_back(wBishop);
-				wBishop->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(Q, White));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				board[i].push_back(wQueen);
-				wQueen->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(K, White));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				board[i].push_back(wKing);
-				wKing->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(B, White));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				wBishop = new Piece(B, White);
-				wBishop->setPosition(pos);
-				board[i].push_back(wBishop);
+				board[i].emplace_back(std::make_unique<Piece>(N, White));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				wKnight = new Piece(N, White);
-				wKnight->setPosition(pos);
-				board[i].push_back(wKnight);
+				board[i].emplace_back(std::make_unique<Piece>(R, White));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
-
-				wRook = new Piece(R, White);
-				wRook->setPosition(pos);
-				board[i].push_back(wRook);
-
 
 			}
 			else if (i == 1) {//This is where pawns will be constructed. Strictly Pawns. Pawns start on rows 6 (Black) and 1 (White). 
 				Piece* wPawn = new Piece(P, White);
+
 				
 				Position pos;
 				pos.xpos = i;
 				pos.ypos = j;
 
-				board[i].push_back(wPawn);
-				wPawn->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(P, White));
+				board[i].back()->setPosition(pos);
 			}
-			else if (i == 2) {
-				Piece* empty = new Piece();
+			else if (i == 2) {//creating the empty spaces on the board on lines 2-5.
 				Position pos;
 				pos.xpos = i;
 				pos.ypos = j;
 
-				board[i].push_back(empty);
-				empty->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>());
+				board[i].back()->setPosition(pos);
 			}
 			else if (i == 3) {
-				Piece* empty = new Piece();
-				
 				Position pos;
 				pos.xpos = i;
 				pos.ypos = j;
 				
-				board[i].push_back(empty);
-				empty->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>());
+				board[i].back()->setPosition(pos);
 			}
 			else if (i == 4) {
-				Piece* empty = new Piece();
-				
 				Position pos;
 				pos.xpos = i;
 				pos.ypos = j;
 
-				board[i].push_back(empty);
-				empty->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>());
+				board[i].back()->setPosition(pos);
 			}
-			else if (i == 5) {
-				Piece* empty = new Piece();
-				
+			else if (i == 5) {				
 				Position pos;
 				pos.xpos = i;
 				pos.ypos = j;
 
-				board[i].push_back(empty);
-				empty->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>());
+				board[i].back()->setPosition(pos);
 			}
 			else if (i == 6) {//This is where pawns will be constructed. Strictly Pawns. Pawns start on rows 6 (Black) and 1 (White). 
-				Piece* bPawn = new Piece(P, Black);
-				
 				Position pos;
 				pos.xpos = i;
 				pos.ypos = j;
 
-				board[i].push_back(bPawn);
-				bPawn->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(P, Black));
+				board[i].back()->setPosition(pos);
 
 			}
 			else if (i == 7 && j == 0) {//This is where the backrow for the white chess pieces will be.
@@ -140,39 +110,36 @@ Board::Board() :board(8) {//Poppulate the board with the correct pieces.
 				pos.xpos = i;
 				pos.ypos = j;
 
-				board[i].push_back(bRook);
-				bRook->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(R, Black));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				board[i].push_back(bKnight);
-				bKnight->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(N, Black));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				board[i].push_back(bBishop);
-				bBishop->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(B, Black));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				board[i].push_back(bQueen);
-				bQueen->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(Q, Black));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 				
-				board[i].push_back(bKing);
-				bKing->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(K, Black));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				bBishop = new Piece(B, Black);
-				board[i].push_back(bBishop);
-				bBishop->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(B, Black));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				bKnight = new Piece(N, Black);
-				board[i].push_back(bKnight);
-				bKnight->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(N, Black));
+				board[i].back()->setPosition(pos);
 				pos.ypos++;
 
-				bRook = new Piece(R, Black);
-				board[i].push_back(bRook);
-				bRook->setPosition(pos);
+				board[i].emplace_back(std::make_unique<Piece>(R, Black));
+				board[i].back()->setPosition(pos);
 			}
 		}
 
@@ -187,10 +154,10 @@ void Board::displayBoard(){
 		std::cout << "_________________________________________" << std::endl<<std::endl;
 		for (int j = 0; j < board[i].size(); j++)
 		{
-			std::cout << "| " << chessCharacter(board[i][j]) << " ";
+			std::cout << "| " << chessCharacter(board[i][j].get()) << " ";
 			
-			std::cout << board[i][j]->getPiecePosition().xpos << " ";
-			std::cout << board[i][j]->getPiecePosition().ypos << std::endl;
+			//std::cout << board[i][j]->getPiecePosition().xpos << " ";
+			//std::cout << board[i][j]->getPiecePosition().ypos << std::endl;
 
 		}
 		std::cout << "|";
@@ -209,7 +176,6 @@ std::string Board::chessCharacter(Piece * chessPiece)
 		break;
 	case 0:
 		chessCharStrng = " ";
-		//std::cout << "yo";
 		break;
 	case 1:
 		chessCharStrng = "P";
@@ -231,7 +197,7 @@ std::string Board::chessCharacter(Piece * chessPiece)
 		break;
 	}
 
-	if (chessPiece->getPlayer() == 1) {
+	if (chessPiece->getPlayer() == 1) {//player using the black pieces are denoted with an asterisk next to the piece.
 		return chessCharStrng + "*";
 	}
 	else {
@@ -239,6 +205,7 @@ std::string Board::chessCharacter(Piece * chessPiece)
 	}
 }
 
+/*
 bool Board::movePiece(Position target, Position destination)
 {
 	Piece* tPiece; //Target Piece
@@ -254,3 +221,4 @@ bool Board::movePiece(Position target, Position destination)
 	return true;
 
 }
+*/

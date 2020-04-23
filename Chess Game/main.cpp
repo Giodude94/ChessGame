@@ -14,6 +14,10 @@
 int main() {
 
 	//Getting to know smart pointers with the code in this multi-line comment
+	Board gameBoard;
+	gameBoard.displayBoard();
+
+	
 	/*
 	std::vector<std::vector<std::shared_ptr<Piece>>> board(8);
 	std::vector<std::unique_ptr<Piece>> test;
