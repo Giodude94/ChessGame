@@ -11,8 +11,7 @@
 
 class Board {
 private:
-	std::vector<std::vector<Piece*>> board;//Board is a 2d vector that is made of pointers to Piece objects.
-
+	std::vector<std::vector<Piece *>> board;//Board is a 2d vector that is made of pointers to Piece objects.
 
 
 
@@ -21,9 +20,9 @@ public:
 	Board();
 
 
-	const void displayBoard(); //Function for displaying the board;
-	std::string chessCharacter(Piece* chessPiece);
-	bool movePiece(Position target, Position destination);
+	void displayBoard(); //Function for displaying the board. Const so we do not change any of the data while displaying.
+	std::string chessCharacter(Piece* chessPiece); //Function that returns a string that represents the chess piece for the board to use as display.
+	bool movePiece(Position target, Position destination); //Move a pice from target to destination. Currently does not check paramaters.
 
 
 

@@ -2,6 +2,7 @@
 #define _PAWN_H_
 
 #include "Piece.h"
+#include <iostream> // Currently only here for testing.
 
 class Pawn : public Piece {
 private:
@@ -18,11 +19,12 @@ public:
 
 
 	//Destructor
-	~Pawn();
+	virtual ~Pawn();
 
 	//Methods
 	void setFirstMove(bool move);
 	bool getFirstMove();
+	virtual bool validateMove() override;
 
 
 

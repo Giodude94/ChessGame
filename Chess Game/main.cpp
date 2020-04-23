@@ -11,22 +11,77 @@
 #include <vector>
 
 
-
-
-
 int main() {
 
-	//Pawn pawn(P,Black);
-	Pawn pawn(K);
-	std::cout << pawn.getFirstMove() << std::endl;
-	std::cout << pawn.getPieceID() << std::endl;
-	std::cout << pawn.getPlayer() << std::endl;
-	//Piece pPawn;
+	//Getting to know smart pointers with the code in this multi-line comment
+	/*
+	std::vector<std::vector<std::shared_ptr<Piece>>> board(8);
+	std::vector<std::unique_ptr<Piece>> test;
+	std::vector<std::vector<std::unique_ptr<Piece>>> test2(8);
+
+	std::shared_ptr<Piece> wRookptr = std::make_shared<Piece>(R, White);
+	std::unique_ptr<Piece> bRookptr = std::make_unique<Piece>(R, Black);
+	std::unique_ptr<Piece> wRookptr2 = std::make_unique<Piece>(R, White); //proves that we can use unique ptrs for vector of vectors.
+	std::unique_ptr<Piece> bRookptr2 = std::make_unique<Piece>(R, Black);
+
+	//std::cout << wRook->getPieceID() << std::endl;
+
+	//test.push_back(wRookptr);
+
+	//test2[0].push_back(std::move(wRookptr2));
+	//test.push_back(std::move(bRookptr));
+	//board[0].push_back(wRookptr);
 	
+	test2[0].push_back(std::move(wRookptr2));
+	test2[0].emplace_back(std::make_unique<Piece>(R, Black));
+
+	std::cout << test2[0][0]->getPieceID() << std::endl;
+	std::cout << test2[0][1]->getPieceID() << std::endl;
+	std::cout << test2[0][0] << std::endl;
+	std::cout << test2[0][0].get() << std::endl;
 	
+	//board[0].emplace_back(std::make_unique<Piece>(R, White));
+
+	*/
 
 	/*
+	std::vector<std::vector<Piece*>> board(8);
 
+	Piece rook;
+	Piece* pRook = &rook;
+
+
+	Pawn pawn;
+	Piece* pPawn = &pawn;
+
+	board[0].push_back(pRook);
+	board[0].push_back(pPawn);
+
+
+	std::cout << board[0][0]->getPieceID() << std::endl;
+	std::cout << board[0][0]->validateMove() << std::endl;
+	std::cout << board[0][1]->getPieceID() << std::endl;
+	std::cout << board[0][1]->validateMove() << std::endl;
+
+	*/
+	
+
+
+
+
+
+
+
+	//Pawn pawn(P,Black);
+	//Pawn pawn(K);
+	//std::cout << pawn.getFirstMove() << std::endl;
+	//std::cout << pawn.getPieceID() << std::endl;
+	//std::cout << pawn.getPlayer() << std::endl;
+	
+	
+
+	
+	/*
 	Board gameBoard;
 
 	gameBoard.displayBoard();
@@ -58,11 +113,11 @@ int main() {
 		std::cout << "There was an issue with moving the piece." << std::endl;
 	}
 
-	
+	*/
 
 
 	
-*/
+
 	system("Pause");
 
 

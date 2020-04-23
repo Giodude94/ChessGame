@@ -8,11 +8,25 @@ Board::Board() :board(8) {//Poppulate the board with the correct pieces.
 		for (int j = 0; j < 8; j++)
 		{
 			if (i == 0 && j == 0) {//This is where the backrow for the white chess pieces will be.
+				
+								   
+			
+				//Moving from using raw pointer to smart pointers.
+				
 				Piece* wRook = new Piece(R, White);
 				Piece* wKnight = new Piece(N, White);
 				Piece* wBishop = new Piece(B, White);
 				Piece* wQueen = new Piece(Q, White);
 				Piece* wKing = new Piece(K, White);
+				
+
+				/*
+				std::unique_ptr wRook = std::make_unique<Piece>(R, White);
+				std::unique_ptr wKnight = std::make_unique<Piece>(N, White);
+				std::unique_ptr wBishop = std::make_unique<Piece>(B, White);
+				std::unique_ptr wQueen = std::make_unique<Piece>(Q, White);
+				std::unique_ptr wKing = std::make_unique<Piece>(K, White);
+				*/
 
 				Position pos;
 				pos.xpos = i;
@@ -166,17 +180,18 @@ Board::Board() :board(8) {//Poppulate the board with the correct pieces.
 }
 
 
-const void Board::displayBoard() {
+void Board::displayBoard(){
+
+	
 	for (int i = 7; i > -1; i--) {
-		std::cout << "_________________________________________"<<std::endl<<std::endl;
+		std::cout << "_________________________________________" << std::endl<<std::endl;
 		for (int j = 0; j < board[i].size(); j++)
 		{
 			std::cout << "| " << chessCharacter(board[i][j]) << " ";
 			
-			//std::cout << board[i][j]->getPiecePosition().xpos << " ";
-			//std::cout << board[i][j]->getPiecePosition().ypos<< std::endl;
-			
-			//std::cout << board[i][j] << " ";
+			std::cout << board[i][j]->getPiecePosition().xpos << " ";
+			std::cout << board[i][j]->getPiecePosition().ypos << std::endl;
+
 		}
 		std::cout << "|";
 		std::cout << std::endl;

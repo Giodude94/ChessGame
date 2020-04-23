@@ -15,12 +15,10 @@ Piece::Piece(pieceNames ID, pieceColor player) //Since we delegate to this const
 {
 	this->pos.xpos = 0;
 	this->pos.ypos = 0;
-	//this->firstMove = false;
-
 }
 
 
-Piece::~Piece() {
+Piece:: ~Piece() {
 
 }
 
@@ -53,4 +51,10 @@ void Piece::setPosition(Position pos)
 Position Piece::getPiecePosition()
 {
 	return this->pos;
+}
+
+bool Piece::validateMove()
+{
+	std::cout << "This is the validateMove defined inside of Piece." << std::endl;
+	return true;
 }
