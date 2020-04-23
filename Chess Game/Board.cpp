@@ -205,20 +205,20 @@ std::string Board::chessCharacter(Piece * chessPiece)
 	}
 }
 
-/*
+
 bool Board::movePiece(Position target, Position destination)
 {
+	
 	Piece* tPiece; //Target Piece
 	Piece* dPiece; // Destination Piece
 
-	tPiece = board[target.xpos][target.ypos];
+	tPiece = board[target.xpos][target.ypos].get();
 
-	dPiece = board[destination.xpos][destination.ypos];
-	board[destination.xpos][destination.ypos] = tPiece;
+	dPiece = board[destination.xpos][destination.ypos].get();
+	board[destination.xpos][destination.ypos] = std::make_unique<Piece>(*tPiece);
 
-	board[target.xpos][target.ypos] = dPiece;
+	board[target.xpos][target.ypos] = std::make_unique<Piece>(*dPiece);
 
 	return true;
 
 }
-*/

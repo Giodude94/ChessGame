@@ -14,8 +14,8 @@
 int main() {
 
 	//Getting to know smart pointers with the code in this multi-line comment
-	Board gameBoard;
-	gameBoard.displayBoard();
+	//Board gameBoard;
+	//gameBoard.displayBoard();
 
 	
 	/*
@@ -85,39 +85,43 @@ int main() {
 	
 
 	
-	/*
+	
 	Board gameBoard;
 
 	gameBoard.displayBoard();
+	
+		Position target;
+		Position destination;
+		int x = 0;
+		int y = 0;
+		char again = 'Y';
+	
+	while (again == 'Y') {
 
-	Position target;
-	Position destination;
-	int x = 0;
-	int y = 0;
+		std::cout << "Which piece would you like to move?" << std::endl;
+		std::cin >> x;
+		std::cin >> y;
 
+		target.xpos = x;
+		target.ypos = y;
 
-	std::cout << "Which piece would you like to move?" << std::endl;
-	std::cin >> x;
-	std::cin >> y;
+		std::cout << "Where would you like to move the piece?" << std::endl;
+		std::cin >> x;
+		std::cin >> y;
 
-	target.xpos = x;
-	target.ypos = y;
+		destination.xpos = x;
+		destination.ypos = y;
 
-	std::cout << "Where would you like to move the piece?" << std::endl;
-	std::cin >> x;
-	std::cin >> y;
-
-	destination.xpos = x;
-	destination.ypos = y;
-
-	if (gameBoard.movePiece(target, destination)) {
-		gameBoard.displayBoard();
+		if (gameBoard.movePiece(target, destination)) {
+			gameBoard.displayBoard();
+			std::cout << "Again?" << std::endl;
+			std::cin >> again;
+		}
+		else {
+			std::cout << "There was an issue with moving the piece." << std::endl;
+		}
 	}
-	else {
-		std::cout << "There was an issue with moving the piece." << std::endl;
-	}
-
-	*/
+	
 
 
 	
