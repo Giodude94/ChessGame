@@ -8,7 +8,6 @@
 #include "Utilities.h"
 #include "Pawn.h"
 
-
 class Board {
 private:
 	std::vector<std::vector<std::unique_ptr<Piece>>> board;//Board is a 2d vector that is made of pointers to Piece objects.
@@ -19,11 +18,18 @@ public:
 	//Constructor for Board Class
 	Board();
 
+	//Methods
+	//Function for displaying the board. Const so we do not change any of the data while displaying.
+	void displayBoard();
+	
+	//Function that returns a string that represents the chess piece for the board to use as display.
+	std::string chessCharacter(Piece * chessPiece);
+	
+	//Move a pice from target to destination. Currently does not check paramaters.
+	bool movePiece(Position target, Position destination);
 
-	void displayBoard(); //Function for displaying the board. Const so we do not change any of the data while displaying.
-	std::string chessCharacter(Piece * chessPiece); //Function that returns a string that represents the chess piece for the board to use as display.
-	bool movePiece(Position target, Position destination); //Move a pice from target to destination. Currently does not check paramaters.
-
+	//Function that will ask the player where they would like to move, and convert their answer to int for use in the vector. (Letter then number)
+	void askMove();
 
 
 };

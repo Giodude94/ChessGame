@@ -89,12 +89,18 @@ int main() {
 	Board gameBoard;
 
 	gameBoard.displayBoard();
-	
-		Position target;
-		Position destination;
-		int x = 0;
-		int y = 0;
-		char again = 'Y';
+	gameBoard.askMove();
+	gameBoard.displayBoard();
+
+	/*
+	Position target;
+	Position destination;
+
+	char letter;
+	int x = 0;
+	int y = 0;
+	char again = 'Y';
+ 
 	
 	while (again == 'Y') {
 
@@ -121,7 +127,7 @@ int main() {
 			std::cout << "There was an issue with moving the piece." << std::endl;
 		}
 	}
-	
+	*/
 
 
 	

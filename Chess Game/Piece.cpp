@@ -11,10 +11,20 @@ Piece::Piece(pieceNames ID)
 }
 
 Piece::Piece(pieceNames ID, pieceColor player) //Since we delegate to this constructor we only need to initialize the x and y pos in the body of this constructor.
-	:pieceID{ ID }, player{ player }
-{
+	:pieceID{ ID }, player{ player }{
 	this->pos.xpos = 0;
 	this->pos.ypos = 0;
+}
+
+Piece::Piece(const Piece & source) // Used for L-value.
+	: pieceID{ source.pieceID }, player{ source.player }, pos{ source.pos }
+{
+
+}
+
+Piece::Piece(Piece &&source) // Used for R-value.
+{
+
 }
 
 

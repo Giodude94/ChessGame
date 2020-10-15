@@ -7,7 +7,7 @@
 #include "Utilities.h"
 #include <iostream> //Currently onle here for testing.
 
-typedef struct Position {
+typedef struct Position {// structure to hold the position of the chess piece.
 	int xpos;
 	int ypos;
 } Position;
@@ -24,10 +24,12 @@ protected: //Protected means inherited classes have acces to them (appear as pri
 	 
 public:
 	//Constructors & Destructor
-	Piece();
-	Piece(pieceNames);
-	Piece(pieceNames, pieceColor);
-	virtual ~Piece();
+	Piece(); //No args constructor.
+	Piece(pieceNames); // One arguement constroctor.
+	Piece(pieceNames, pieceColor); // Two arguement constructor.  **Position is initialized in this constructor.
+	Piece(const Piece &source); //Copy constructor
+	Piece(Piece &&source); //Move Constructor
+	virtual ~Piece(); //Since this class is virtual, it must have a virtual destructor.
 
 	//Methods
 	void setPieceID(pieceNames ID);
