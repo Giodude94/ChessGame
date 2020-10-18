@@ -13,6 +13,24 @@
 
 int main() {
 
+
+	/*
+	//Testing if the position updates for the piece using the SetPosition method.
+	
+	{
+		Position Destination;
+		Destination.xpos = 5;
+		Destination.ypos = 5;
+		//std::cout << Destination.xpos << " " << Destination.ypos << std::endl;
+
+		std::vector<std::unique_ptr<Piece>> test;
+		test.push_back(std::make_unique<Piece>(R, Black));
+		std::cout << test[0]->getPiecePosition().xpos << " " << test[0]->getPiecePosition().ypos << std::endl;
+		test[0]->setPosition(Destination);
+		std::cout << test[0]->getPiecePosition().xpos << " " << test[0]->getPiecePosition().ypos << std::endl;
+	}
+	*/
+
 	//Getting to know smart pointers with the code in this multi-line comment
 	//Board gameBoard;
 	//gameBoard.displayBoard();
@@ -89,10 +107,15 @@ int main() {
 	Board gameBoard;
 
 	gameBoard.displayBoard();
-	gameBoard.askMove();
+	gameBoard.validMove();
 	gameBoard.displayBoard();
+	gameBoard.validMove();
+	gameBoard.displayBoard();
+	
+
 
 	/*
+
 	Position target;
 	Position destination;
 
@@ -105,8 +128,8 @@ int main() {
 	while (again == 'Y') {
 
 		std::cout << "Which piece would you like to move?" << std::endl;
-		std::cin >> x;
-		std::cin >> y;
+		std::cin >> target.xpos;
+		std::cin >> target.ypos;
 
 		target.xpos = x;
 		target.ypos = y;
@@ -128,6 +151,7 @@ int main() {
 		}
 	}
 	*/
+	
 
 
 	

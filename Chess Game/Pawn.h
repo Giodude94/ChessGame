@@ -7,7 +7,8 @@
 class Pawn : public Piece {
 private:
 	//Members
-	bool firstMove;
+	//firstMove reffers to the pawns very first move of the game. Since it can either move two spaces up or one space up.
+	bool firstMoveDone;
 
 
 public:
@@ -22,9 +23,9 @@ public:
 	virtual ~Pawn();
 
 	//Methods
-	void setFirstMove(bool move);
+	void setFirstMove(bool didMove);
 	bool getFirstMove();
-	virtual bool validateMove() override;
+	virtual bool validateMove(Position moveToPos) override;
 
 
 

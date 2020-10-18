@@ -38,10 +38,10 @@ public:
 	void setPlayer(pieceColor player);
 	pieceColor getPlayer();
 
-	void setPosition(Position pos); //What needs to be passed in the arguement the chess piece in question or does 'this' work, and where do we want to set position
+	void setPosition(Position pos); //Position that the piece is set to is passed and set in this method.
 	Position getPiecePosition(); //Keep the return type as Position? // Need to overload constructor to display x and Y
 
-	virtual bool validateMove(); // used to validate each piece's moves. It is a virtual function in order to use specific members in each subclass that inherits from this class.
+	virtual bool validateMove(Position moveToPos); // used to validate each piece's moves. It is a virtual function in order to use specific members in each subclass that inherits from this class.
 
 };
 

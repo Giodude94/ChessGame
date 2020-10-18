@@ -63,7 +63,7 @@ Position Piece::getPiecePosition()
 	return this->pos;
 }
 
-bool Piece::validateMove()
+bool Piece::validateMove(Position moveToPos)
 {
 	std::cout << "This is the validateMove defined inside of Piece." << std::endl;
 	return true;

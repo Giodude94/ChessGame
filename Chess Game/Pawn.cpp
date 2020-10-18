@@ -1,17 +1,17 @@
 #include "Pawn.h"
 
 Pawn::Pawn():Piece(){
-	this->firstMove = false;
+	this->firstMoveDone = false;
 }
 
 
 Pawn::Pawn(pieceNames ID):Piece(ID) {
-	this->firstMove = false;
+	this->firstMoveDone = false;
 }
 
 Pawn::Pawn(pieceNames ID, pieceColor player):Piece(ID, player)
  {
-	this->firstMove = false;
+	this->firstMoveDone = false;
 }
 
 Pawn::~Pawn()
@@ -20,17 +20,23 @@ Pawn::~Pawn()
 
 bool Pawn::getFirstMove()
 {
-	return this->firstMove;
+	return this->firstMoveDone;
 }
 
-void Pawn::setFirstMove(bool move)
+void Pawn::setFirstMove(bool didMove)
 {
-	this->firstMove = move;
+	this->firstMoveDone = didMove;
 }
 
-bool Pawn::validateMove()
+bool Pawn::validateMove(Position moveToPos)//Will need to take in the pawns position on the board.
 {
-	std::cout << "This is the validateMove defined inside of Pawn." << std::endl;
+	std::cout << "Moved from position: Row "<< pos.xpos << "  Col " << pos.ypos << std::endl;
+	//If it is the pawns first move then it can only move one spot up or two spots up.
+	//if (!firstMoveDone) {
+		//Pawn can only move one piece forward or two pieces forward.
+		
+	//}
+	//std::cout << "This is the validateMove defined inside of Pawn." << std::endl;
 
 	return true; 
 }

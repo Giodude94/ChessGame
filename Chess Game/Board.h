@@ -28,8 +28,8 @@ public:
 	//Move a pice from target to destination. Currently does not check paramaters.
 	bool movePiece(Position target, Position destination);
 
-	//Function that will ask the player where they would like to move, and convert their answer to int for use in the vector. (Letter then number)
-	void askMove();
+	//Function that will ask the player where they would like to move, make sure the user input is in the correct format, validateMove using that Pieces' validateMove method, and return bool if it is valid or not.
+	bool validMove();
 
 
 };

@@ -48,14 +48,16 @@ Board::Board() :board(8) {//Poppulate the board with the correct pieces.
 
 			}
 			else if (i == 1) {//This is where pawns will be constructed. Strictly Pawns. Pawns start on rows 6 (Black) and 1 (White). 
-				Piece* wPawn = new Piece(P, White);
+			
+			//Most likely old code that can be deleted after succesfull run.
+			//Piece* wPawn = new Pawn(P, White);
 
 				
 				Position pos;
 				pos.xpos = i;
 				pos.ypos = j;
 
-				board[i].emplace_back(std::make_unique<Piece>(P, White));
+				board[i].emplace_back(std::make_unique<Pawn>(P, White));
 				board[i].back()->setPosition(pos);
 			}
 			else if (i == 2) {//creating the empty spaces on the board on lines 2-5.
@@ -95,18 +97,11 @@ Board::Board() :board(8) {//Poppulate the board with the correct pieces.
 				pos.xpos = i;
 				pos.ypos = j;
 
-				board[i].emplace_back(std::make_unique<Piece>(P, Black));
+				board[i].emplace_back(std::make_unique<Pawn>(P, Black));
 				board[i].back()->setPosition(pos);
 
 			}
 			else if (i == 7 && j == 0) {//This is where the backrow for the white chess pieces will be.
-				/*
-				Piece* bRook = new Piece(R, Black);
-				Piece* bKnight = new Piece(N, Black);
-				Piece* bBishop = new Piece(B, Black);
-				Piece* bQueen = new Piece(Q, Black);
-				Piece* bKing = new Piece(K, Black);
-				*/
 
 				Position pos;
 				pos.xpos = i;
@@ -222,11 +217,15 @@ bool Board::movePiece(Position target, Position destination)
 {
 	//Uses the Vector swap method to swap places on the board.
 	//Have to check if the move is valid before we do the swap.
-	board[destination.xpos][destination.ypos].swap(board[target.xpos][target.ypos]);
+
+	board[destination.xpos][destination.ypos].swap(board[target.xpos][target.ypos]); //Swaps the two pointers, Pos does not get changed when swapped. (Pieces get swapped but still hold their old position.)
+	board[target.xpos][target.ypos]->setPosition(target); //Updates the position of the piece at target with the coordinates of the target position.
+	board[destination.xpos][destination.ypos]->setPosition(destination); //Updates the position of the Piece at destination with the destination coordinates.
+	
 	return true;
 }
 
-void Board::askMove()
+bool Board::validMove()
 {
 	Position target;
 	Position destination;
@@ -281,7 +280,7 @@ void Board::askMove()
 		std::getline(std::cin, userInput, '\n');
 		y = (unsigned char)userInput[0]; //userInput[0] is the letter part of the string.
 		x = std::atoi(&userInput[1]); //userInput[1] is the number part of the string.
-		
+
 
 		//Checking for valid input of Letter.
 		if (!isalpha(y)) {
@@ -312,8 +311,17 @@ void Board::askMove()
 			std::cout << "Enter a valid number between 1-8." << std::endl;
 		}
 	}
-	
-	
-	movePiece(target,destination);
+
+	//Works for pawns,(calls the validateMove method that is defined in the derived class instead of the base class.)
+	if (board[target.xpos][target.ypos]->validateMove(destination)) {
+		std::cout << "Can move to space." << std::endl;
+		movePiece(target, destination);
+		return true;
+	}
+	else {
+		std::cout << "The move that you entered was not valid." << std::endl;
+		return false;
+	}
+
 }
 
